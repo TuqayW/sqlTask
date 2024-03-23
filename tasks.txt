@@ -1,0 +1,149 @@
+41)SET @total_sales = (SELECT SUM(amount) FROM Sales);
+42)SET @max_salary = (SELECT MAX(salary) FROM Employee);
+43)SET @product_count = (SELECT COUNT(*) FROM Product);
+44)SET @avg_price = (SELECT AVG(price) FROM Product);
+45)SET @customer_total = (SELECT COUNT(*) FROM Customer);
+46)SELECT TOP 3 * FROM Employee ORDER BY salary DESC;
+47)SELECT TOP 5 * FROM Product ORDER BY price ASC;
+48)SELECT Customer * FROM Customer 
+JOIN Orders ON Customer.customer_id = Orders.customer_id 
+GROUP BY Customer.customer_id 
+HAVING COUNT(Orders.order_id) > 10;
+49)SELECT * FROM Supplier WHERE location IN ('New York', 'Los Angeles');
+50)SELECT * FROM Product WHERE price BETWEEN 10 AND 50;
+
+
+
+
+
+1)SELECT Name, 
+       CASE 
+           WHEN Salary > 50000 THEN 'High Salary' 
+           ELSE 'Regular Salary' 
+       END AS Position 
+FROM Employees 
+UNION 
+SELECT Name, 
+       CASE 
+           WHEN Salary > 50000 THEN 'Manager High Salary' 
+           ELSE 'Manager Regular Salary' 
+       END AS Position 
+FROM Managers;
+2)SELECT ProductName, 
+       CASE 
+           WHEN Price > 20 THEN 'High Price' 
+           ELSE 'Low Price' 
+       END AS PriceStatus 
+FROM Products 
+WHERE Stock > 100 
+UNION 
+SELECT ServiceName, 
+       CASE 
+           WHEN Price > 20 THEN 'High Price' 
+           ELSE 'Low Price' 
+       END AS PriceStatus 
+FROM Services;
+3)SELECT Name, 
+       CASE 
+           WHEN Country = 'USA' THEN 'US City' 
+           ELSE 'Non-US City' 
+       END AS CityStatus 
+FROM Customers 
+UNION 
+SELECT Name, 
+       CASE 
+           WHEN Country = 'USA' THEN 'US Supplier' 
+           ELSE 'Non-US Supplier' 
+       END AS CityStatus 
+FROM Suppliers;
+4)SELECT OrderID, 
+       CASE 
+           WHEN Quantity > 10 THEN 'Bulk Order' 
+           ELSE 'Regular Order' 
+       END AS OrderType 
+FROM Orders 
+UNION 
+SELECT ReturnID, 
+       CASE 
+           WHEN Quantity > 10 THEN 'Bulk Return' 
+           ELSE 'Regular Return' 
+       END AS ReturnStatus 
+FROM Returns;
+5)SELECT Name, 
+       CASE 
+           WHEN Score > 80 THEN 'High Grade' 
+           ELSE 'Low Grade' 
+       END AS Grade 
+FROM Students 
+UNION 
+SELECT Name, 
+       CASE 
+           WHEN Score > 80 THEN 'High Score' 
+           ELSE 'Low Score' 
+       END AS Grade 
+FROM Teachers;
+6)SELECT Title, 
+       CASE 
+           WHEN Pages > 200 THEN 'Long Book' 
+           ELSE 'Short Book' 
+       END AS BookType 
+FROM Books 
+UNION 
+SELECT Title, 
+       CASE 
+           WHEN Pages > 200 THEN 'Long Magazine' 
+           ELSE 'Short Magazine' 
+       END AS BookType 
+FROM Magazines;
+7)SELECT Model, 
+       CASE 
+           WHEN Mileage > 10000 THEN 'High Mileage' 
+           ELSE 'Low Mileage' 
+       END AS MileageStatus 
+FROM Cars 
+UNION 
+SELECT Model, 
+       CASE 
+           WHEN Mileage > 10000 THEN 'High Mileage Bike' 
+           ELSE 'Low Mileage Bike' 
+       END AS MileageStatus 
+FROM Bikes;
+8)SELECT Title, 
+       CASE 
+           WHEN Rating > 7 THEN 'Highly Rated' 
+           ELSE 'Low Rated' 
+       END AS RatingStatus 
+FROM Movies 
+UNION 
+SELECT Title, 
+       CASE 
+           WHEN Rating > 7 THEN 'Highly Rated Series' 
+           ELSE 'Low Rated Series' 
+       END AS RatingStatus 
+FROM Series;
+9)SELECT ProductID, 
+       CASE 
+           WHEN Amount > 1000 THEN 'High Sale' 
+           ELSE 'Low Sale' 
+       END AS SaleStatus 
+FROM Sales 
+UNION 
+SELECT ProductID, 
+       CASE 
+           WHEN Amount > 1000 THEN 'High Purchase' 
+           ELSE 'Low Purchase' 
+       END AS SaleStatus 
+FROM Purchases;
+10)SELECT UserName, 
+       CASE 
+           WHEN Age > 30 THEN 'Older User' 
+           ELSE 'Younger User' 
+       END AS AgeStatus 
+FROM Users 
+UNION 
+SELECT AdminName, 
+       CASE 
+           WHEN Age > 30 THEN 'Older Admin' 
+           ELSE 'Younger Admin' 
+       END AS AgeStatus 
+FROM Admins;
